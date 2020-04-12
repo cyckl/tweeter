@@ -3,7 +3,7 @@
 // Call in dependencies / set up global variables
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const version = '1.2.0';
+const version = '1.2.1';
 var token = process.argv[2];
 
 // Bootup sequence
@@ -20,8 +20,8 @@ client.on('ready', () => {
 
 // Command init
 client.on('message', (message) => {
-    if (message.content.startsWith('.t')) tweet(message);
-    if (message.content.startsWith('.run')) exec(message);
+    if (message.content.startsWith('.t ')) tweet(message);
+    if (message.content.startsWith('.run ')) exec(message);
     if (message.content.startsWith('.about')) about(message);
 });
 
@@ -77,7 +77,7 @@ function about(message) {
         .setColor(0xFF453A)
         .setDescription('Tweeter is a mock Twitter embed generator for Discord.')
         .addField('Version', version, true)
-        .addField('Build date', '2020-04-11', true)
+        .addField('Build date', '2020-04-12', true)
         .setFooter('This is alpha software. Please be patient!')
         .setThumbnail('https://github.com/cyckl/tweeter/raw/master/img/tweeter.png');
     // Send tweet and log
