@@ -3,7 +3,7 @@
 // Call in dependencies / set up global variables
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const version = '1.1.7';
+const version = '1.1.8';
 
 // Bootup sequence
 client.on('ready', () => {
@@ -67,13 +67,13 @@ function exec(message) {
 function about(message) {
     var embed = new MessageEmbed()
         .setTitle('Tweeter by cyckl')
-        .setAuthor('About', 'https://cdn.discordapp.com/attachments/697294760372600852/698763907833266237/tweeter.png')
+        .setAuthor('About', 'https://github.com/cyckl/tweeter/raw/master/img/tweeter.png')
         .setColor(0xFF453A)
         .setDescription('Tweeter is a mock Twitter embed generator for Discord.')
         .addField('Version', version, true)
         .addField('Build date', '2020-04-11', true)
         .setFooter('This is alpha software. Please be patient!')
-        .setThumbnail('https://cdn.discordapp.com/attachments/697294760372600852/698763907833266237/tweeter.png')
+        .setThumbnail('https://github.com/cyckl/tweeter/raw/master/img/tweeter.png')
     // Send tweet and log
     message.channel.send(embed);
     console.log('[About] (' + message.author.tag + ') ' + 'About dialogue triggered.');
