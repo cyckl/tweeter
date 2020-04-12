@@ -3,7 +3,8 @@
 // Call in dependencies / set up global variables
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const version = '1.1.8';
+const version = '1.1.9';
+var token = process.argv[2];
 
 // Bootup sequence
 client.on('ready', () => {
@@ -79,4 +80,4 @@ function about(message) {
     console.log('[About] (' + message.author.tag + ') ' + 'About dialogue triggered.');
 }
 
-client.login('token');
+client.login(token);
