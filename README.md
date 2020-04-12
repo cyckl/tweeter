@@ -12,7 +12,7 @@ A mock Twitter embed generator bot for Discord.
 - Randomized likes and retweets (in very high quantities!)
 - Accurate recreation of Discord embed
 - All commands and usage logged to console output.
-- Lightweight (only 83 lines!)
+- Lightweight (less than 100 lines!)
 
 ## Example
 ![Example of usage and embed](https://github.com/cyckl/tweeter/raw/master/img/example.png)
