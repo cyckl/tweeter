@@ -3,19 +3,16 @@
 // Call in dependencies / set up global variables
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const version = '1.2.2';
+const version = '1.2.3';
 var token = process.argv[2];
 
 // Bootup sequence
 client.on('ready', () => {
-    console.log('╔════════════════════════════════════╗');
-    console.log('║                                    ║');
-    console.log('║  Tweeter by cyckl                  ║');
-    console.log('║  Running version ' + version + '             ║');
-    console.log('║  RIP 3-inch-largest                ║');
-    console.log('║                                    ║');
-    console.log('╚════════════════════════════════════╝');
-    console.log('Online!\n');
+    console.log('╔═══════════════════════╗');
+    console.log('║ Tweeter by cyckl      ║');
+    console.log('║ Running version ' + version + ' ║');
+    console.log('╚═══════════════════════╝');
+    console.log('[Status] Ready.');
     client.user.setActivity('.t msg');
 });
 
