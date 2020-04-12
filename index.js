@@ -1,4 +1,4 @@
-// Tweeter
+// Tweeter bot by cyckl
 
 // Call in dependencies / set up global variables
 const { Client, MessageEmbed } = require('discord.js');
@@ -8,13 +8,13 @@ var token = process.argv[2];
 
 // Bootup sequence
 client.on('ready', () => {
-    console.log('╔═════════════════════════════════════════╗')
-    console.log('║                                         ║')
-    console.log('║  Tweeter by cyckl                       ║')
-    console.log('║  Running version ' + version + ' (Alpine branch)  ║')
-    console.log('║  Forked from 3-inch-largest             ║')
-    console.log('║                                         ║')
-    console.log('╚═════════════════════════════════════════╝\n')
+    console.log('╔════════════════════════════════════╗')
+    console.log('║                                    ║')
+    console.log('║  Tweeter by cyckl                  ║')
+    console.log('║  Running version ' + version + '             ║')
+    console.log('║  RIP 3-inch-largest                ║')
+    console.log('║                                    ║')
+    console.log('╚════════════════════════════════════╝\n')
     client.user.setActivity('.t msg');
 });
 
