@@ -3,7 +3,7 @@
 // Call in dependencies / set up global variables
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const version = '1.2.4';
+const version = '1.2.5';
 var token = process.argv[2];
 
 // Bootup sequence
@@ -19,8 +19,8 @@ client.on('ready', () => {
 // Command list
 client.on('message', (message) => {
     if (message.content.startsWith('.t ')) tweet(message);
-    if (message.content.startsWith('.about')) about(message);
-    if (message.content.startsWith('.run ')) run(message);
+    if (message.content.startsWith('t.about')) about(message);
+    if (message.content.startsWith('t.run ')) run(message);
 })
 
 // Command logic
