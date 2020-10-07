@@ -84,14 +84,14 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 		// Fill embed and send it
 		s.ChannelMessageSendEmbed(m.ChannelID, &discordgo.MessageEmbed{
 			Author: &discordgo.MessageEmbedAuthor{
-				Name:    tweetAuthor,
-				IconURL: discordgo.EndpointUserAvatar(m.Author.ID, m.Author.Avatar),
+				Name:		tweetAuthor,
+				IconURL:	discordgo.EndpointUserAvatar(m.Author.ID, m.Author.Avatar),
 			},
-			Color:       1942002,
-			Description: strings.TrimPrefix(m.Content, ".t "),
-			Footer: &discordgo.MessageEmbedFooter{
-				Text:    "Twitter",
-				IconURL: "https://abs.twimg.com/icons/apple-touch-icon-192x192.png",
+			Color:			1942002,
+			Description:	strings.TrimPrefix(m.Content, ".t "),
+			Footer:	&discordgo.MessageEmbedFooter{
+				Text:		"Twitter",
+				IconURL:	"https://abs.twimg.com/icons/apple-touch-icon-192x192.png",
 			},
 
 			Fields: []*discordgo.MessageEmbedField{
