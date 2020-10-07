@@ -16,10 +16,11 @@ import (
 
 var (
 	token   string
-	version string = "2.0.0"
+	version string
 )
 
 func init() {
+	version = "2.0.0"
 	flag.StringVar(&token, "t", "", "Bot token")
 	flag.Parse()
 }
@@ -32,7 +33,7 @@ func main() {
 		return
 	}
 
-	// Register the tweet func as a callback for MessageCreate events
+	// Register the tweet, about func as a callback for MessageCreate events
 	dg.AddHandler(tweet)
 	dg.AddHandler(about)
 
@@ -59,6 +60,7 @@ func main() {
 	dg.Close()
 }
 
+// Pueudorandom numbers
 func randInt(min, max int) int {
 	rand.Seed(time.Now().UnixNano())
 	return min + rand.Intn(max-min)
@@ -70,7 +72,6 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// Tweet
 	if strings.HasPrefix(m.Content, ".t ") {
 		// Nickname handling
 		tweetAuthor := "undefined"
@@ -108,9 +109,8 @@ func about(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// Tweet
 	if m.Content == "t.about" {
-		// Fill embed and send it
+		// Send embed
 		s.ChannelMessageSendEmbed(m.ChannelID, &discordgo.MessageEmbed{
 			Thumbnail: &discordgo.MessageEmbedThumbnail{
 				URL:	"https://github.com/cyckl/tweeter/raw/master/img/tweeter.png",
