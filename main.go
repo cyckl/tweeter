@@ -48,8 +48,8 @@ func main() {
 
 	// Wait here until EOF
 	fmt.Println("╔═══════════════════════╗")
-    fmt.Println("║ Tweeter by cyckl      ║")
-    fmt.Println(fmt.Sprintf("║ Running version %s ║", version))
+	fmt.Println("║ Tweeter by cyckl      ║")
+	fmt.Println(fmt.Sprintf("║ Running version %s ║", version))
 	fmt.Println("╚═══════════════════════╝")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
