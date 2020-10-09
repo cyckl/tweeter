@@ -130,7 +130,7 @@ func about(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 			Fields: []*discordgo.MessageEmbedField{
 				{Name: "Version", Value: version, Inline: true},
-				{Name: "Build date", Value: "2020-10-06", Inline: true},
+				{Name: "Build date", Value: "2020-10-09", Inline: true},
 				{Name: "Github", Value: "https://github.com/cyckl/tweeter", Inline: false},
 			},
 		})
