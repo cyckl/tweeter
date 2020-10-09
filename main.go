@@ -20,12 +20,15 @@ var (
 )
 
 func init() {
-	version = "2.0.0"
+	version = "2.0.1"
 	flag.StringVar(&token, "t", "", "Bot token")
 	flag.Parse()
 }
 
 func main() {
+	// Pseudorandom num gen seed
+	rand.Seed(time.Now().UnixNano())
+
 	// Create new Discord session using bot token
 	dg, err := discordgo.New("Bot " + token)
 	if err != nil {
@@ -62,7 +65,6 @@ func main() {
 
 // Pueudorandom numbers
 func randInt(min, max int) int {
-	rand.Seed(time.Now().UnixNano())
 	return min + rand.Intn(max-min)
 }
 
@@ -76,7 +78,7 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 		// Nickname handling
 		tweetAuthor := "undefined"
 		if m.Member.Nick != "" {
-			tweetAuthorValues := []string{m.Member.Nick, " (", m.Author.Username, ")"}
+			tweetAuthorValues := []string{m.Member.Nick, " (@", m.Author.Username, ")"}
 			tweetAuthor = strings.Join(tweetAuthorValues, "")
 		} else {
 			tweetAuthor = m.Author.Username
@@ -97,7 +99,7 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 			Fields: []*discordgo.MessageEmbedField{
 				{Name: "Retweets", Value: strconv.Itoa(randInt(25000, 50000)), Inline: true},
-				{Name: "Likes", Value: strconv.Itoa(randInt(50000, 100000)), Inline: true},
+				{Name: "Likes", Value: strconv.Itoa(randInt(50000, 150000)), Inline: true},
 			},
 		})
 	}
