@@ -10,12 +10,11 @@ import (
 	"strings"
 	"syscall"
 	"time"
-
 	"github.com/bwmarrin/discordgo"
 )
 
 var (
-	token   string
+	token string
 	version string
 )
 
@@ -26,8 +25,6 @@ func init() {
 }
 
 func main() {
-	// Pseudorandom num gen seed
-
 	// Create new Discord session using bot token
 	dg, err := discordgo.New("Bot " + token)
 	if err != nil {
@@ -54,13 +51,16 @@ func main() {
 	fmt.Println("║ Tweeter by cyckl      ║")
 	fmt.Println(fmt.Sprintf("║ Running version %s ║", version))
 	fmt.Println("╚═══════════════════════╝")
+	fmt.Println("[Permissions] 75776")
+	
+	// Seed RNG
 	rand.Seed(time.Now().UnixNano())
 	fmt.Println("[Info] Random number generator seeded")
+
+	// Close Discord session cleanly
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-sc
-
-	// Close Discord session cleanly
 	dg.Close()
 	fmt.Println("[Info] Program terminated")
 }
@@ -85,7 +85,10 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 		} else {
 			tweetAuthor = m.Author.Username
 		}
-
+		
+		// Delete command issuer
+		s.ChannelMessageDelete(m.ChannelID, m.ID)
+		
 		// Fill embed and send it
 		s.ChannelMessageSendEmbed(m.ChannelID, &discordgo.MessageEmbed{
 			Author: &discordgo.MessageEmbedAuthor{
@@ -104,6 +107,8 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 				{Name: "Likes", Value: strconv.Itoa(randInt(25000, 150000)), Inline: true},
 			},
 		})
+		
+		// Log to console
 		fmt.Println(fmt.Sprintf("[Tweet] (%s) %s", m.Author.ID, strings.TrimPrefix(m.Content, ".t ")))
 	}
 }
