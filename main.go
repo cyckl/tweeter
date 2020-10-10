@@ -19,7 +19,7 @@ var (
 )
 
 func init() {
-	version = "2.0.2"
+	version = "2.0.3"
 	flag.StringVar(&token, "t", "", "Bot token")
 	flag.Parse()
 }
