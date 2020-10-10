@@ -20,14 +20,13 @@ var (
 )
 
 func init() {
-	version = "2.0.1"
+	version = "2.0.2"
 	flag.StringVar(&token, "t", "", "Bot token")
 	flag.Parse()
 }
 
 func main() {
 	// Pseudorandom num gen seed
-	rand.Seed(time.Now().UnixNano())
 
 	// Create new Discord session using bot token
 	dg, err := discordgo.New("Bot " + token)
@@ -55,12 +54,15 @@ func main() {
 	fmt.Println("║ Tweeter by cyckl      ║")
 	fmt.Println(fmt.Sprintf("║ Running version %s ║", version))
 	fmt.Println("╚═══════════════════════╝")
+	rand.Seed(time.Now().UnixNano())
+	fmt.Println("[Info] Random number generator seeded")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-sc
 
 	// Close Discord session cleanly
 	dg.Close()
+	fmt.Println("[Info] Program terminated")
 }
 
 // Pueudorandom numbers
@@ -98,10 +100,11 @@ func tweet(s *discordgo.Session, m *discordgo.MessageCreate) {
 			},
 
 			Fields: []*discordgo.MessageEmbedField{
-				{Name: "Retweets", Value: strconv.Itoa(randInt(25000, 50000)), Inline: true},
-				{Name: "Likes", Value: strconv.Itoa(randInt(50000, 150000)), Inline: true},
+				{Name: "Retweets", Value: strconv.Itoa(randInt(5000, 50000)), Inline: true},
+				{Name: "Likes", Value: strconv.Itoa(randInt(25000, 150000)), Inline: true},
 			},
 		})
+		fmt.Println(fmt.Sprintf("[Tweet] (%s) %s", m.Author.ID, strings.TrimPrefix(m.Content, ".t ")))
 	}
 }
 
