@@ -3,7 +3,7 @@ A mock Twitter embed generator bot for Discord, written in Go.
 
 ## Building
 1. Install Go
-2. Install [discordgo](https://github.com/bwmarrin/discordgo) with `go get github.com/bwmarrin/discordgo`
+2. Install [discordgo](https://github.com/bwmarrin/discordgo) with `go get github.com/bwmarrin/discordgo@HEAD`
 3. Build the bot with `go build`
 4. Set the `$TOKEN_TWEETER` environment variable with your token
 	- `export TOKEN_TWEETER=token`
