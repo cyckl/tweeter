@@ -14,10 +14,13 @@ import (
 )
 
 // Set global variables / boot information
-const version = "3.0.0"
+const (
+	version =	"3.0.1"
+	buildDate = "2021-05-03"
+)
 var (
 	s				*discordgo.Session
-	token =			flag.String("t", "", "Bot token")
+	token =			os.Getenv("TOKEN_TWEETER")
 	register =		flag.Bool("r", false, "Register (or re-register) bot commands on startup")
 	unregister =	flag.Bool("u", false, "Unregister bot commands on shutdown")
 )
@@ -72,7 +75,7 @@ func main() {
 	
 	// Create bot client session
 	log.Println("[Info] Logging in")
-	s, err = discordgo.New("Bot " + *token)
+	s, err = discordgo.New("Bot " + token)
 	if err != nil {
 		log.Fatalf("[Fatal] Error creating session: %v", err)
 	}
@@ -184,7 +187,7 @@ func about(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
 						Fields: []*discordgo.MessageEmbedField{
 							{Name:	"Version",		Value: version,								Inline: true},
-							{Name:	"Build date",	Value: "2021-05-02",						Inline: true},
+							{Name:	"Build date",	Value: buildDate,							Inline: true},
 							{Name:	"Github",		Value: "https://github.com/cyckl/tweeter",	Inline: false},
 						},
 					},
