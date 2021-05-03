@@ -1,5 +1,5 @@
-# Tweeter 2
-A mock Twitter embed generator bot for Discord, now written in Go.
+# Tweeter 3
+A mock Twitter embed generator bot for Discord, written in Go.
 
 ## Building
 1. Install Go
@@ -10,6 +10,8 @@ A mock Twitter embed generator bot for Discord, now written in Go.
 
 ## Features
 - User information added into tweet embed (with support for nicknames)
+- You can select other users
+- Slash commands
 - Randomized likes and retweets
 - Accurate recreation of Discord embed
 - Written in Go, I guess
@@ -18,12 +20,12 @@ A mock Twitter embed generator bot for Discord, now written in Go.
 ![Example of usage and embed](https://github.com/cyckl/tweeter/raw/master/img/example.png)
 
 ## Usage
-There are three available commands:
+There are two available commands:
 
-`.t <message>`
+`/tweet <message>`
 This generates a tweet with the provided text.
 
-`t.about`
+`/about`
 About dialog.
 
 ## Bugs?
